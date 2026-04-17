@@ -1,16 +1,2 @@
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        //logic ek map lo jahan value aur index store krenge
-        //traverse the array
-        //if remaining is found in the map return the pair
-        //if not then store the current value with its index in map
-        unordered_map<int,int>seen;
-        for(int i=0;i<nums.size();i++){
-            int rem=target-nums[i];
-            if(seen.find(rem)!=seen.end()) return {i,seen[rem]};
-            seen[nums[i]]=i;
-        }
-        return {-1,-1};
-    }
-};
+#include<iostream>
+using namespace std;
