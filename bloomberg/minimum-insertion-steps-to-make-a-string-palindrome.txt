@@ -1,1 +1,10 @@
-Could not extract code
+class Solution {
+public:
+    int find(string s,int start,int end,vector<vector<int>>&dp){
+        if(start==end){
+            return 0;
+        }
+        if(start>end){
+            return 0;
+        }
+        if(dp[start][end]!=-1) return dp[start][end];
