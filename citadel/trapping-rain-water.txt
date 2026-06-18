@@ -1,6 +1,31 @@
 class Solution {
 public:
+    vector<int> findPrev(vector<int>& height){
+        vector<int>ans;
+        int maxi=INT_MIN;
+        for(auto i:height){
+            maxi=max(i,maxi);
+            ans.push_back(maxi);
+        }
+        return ans;
+    }
+    vector<int> findNext(vector<int>& height){
+        vector<int>ans;
+        int maxi=INT_MIN;
+        for(int i=height.size()-1;i>=0;i--){
+            maxi=max(height[i],maxi);
+            ans.push_back(maxi);
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
     int trap(vector<int>& height) {
-        
+        vector<int>prevMax=findPrev(height);
+        vector<int>nextMax=findNext(height);
+        int water=0;
+        for(int i=0;i<height.size();i++){
+            water+=min(prevMax[i],nextMax[i])-height[i];
+        }
+        return water;
     }
 };
