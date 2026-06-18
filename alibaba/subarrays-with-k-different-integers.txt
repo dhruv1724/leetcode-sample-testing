@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int find(vector<int>&nums,int k){
+        int l=0;
+        int r=0;
+        int n=nums.size();
+        int count=0;
+        unordered_map<int,int>freq;
+        while(r<n){
+            freq[nums[r]]++;
+            while(freq.size()>k){
+                freq[nums[l]]--;
+                if(freq[nums[l]]==0){
+                    freq.erase(nums[l]);
+                }
+                l++;
+            }
+            count+=r-l+1;
+            r++;
+        }
+        cout<<count;
+        return count;
+    }
+    int subarraysWithKDistinct(vector<int>& nums, int k) {
+        int ans1=find(nums,k);
+        int ans2=find(nums,k-1);
+        return ans1-ans2;
+    }
+};
